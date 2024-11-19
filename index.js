@@ -1,20 +1,9 @@
+import { triggerHapticFeedback } from './hapticFeedback.js';
+
 document.addEventListener("DOMContentLoaded", () => {
   const tg = window.Telegram.WebApp;
 
   tg.ready();
-
-  function triggerHapticFeedback(type = "impact", style = "medium") {
-    const { HapticFeedback } = tg || {};
-    if (!HapticFeedback) return;
-
-    const methods = {
-      impact: () => HapticFeedback.impactOccurred(style),
-      notification: () => HapticFeedback.notificationOccurred(style),
-      selection: () => HapticFeedback.selectionChanged(),
-    };
-
-    methods[type]?.();
-  }
 
   // Пример: Показать Alert
   document.getElementById("show-alert").addEventListener("click", () => {
@@ -35,9 +24,9 @@ document.addEventListener("DOMContentLoaded", () => {
       name: "Premium Subscription",
       description: "Unlock premium features with Stars subscription!",
       payload: "subscription_premium",
-      provider_token: "YOUR_PROVIDER_TOKEN", // Замените на реальный токен провайдера
+      provider_token: "YOUR_PROVIDER_TOKEN",
       currency: "stars",
-      prices: [{ label: "1 Month Premium", amount: 499 }], // Цена в минимальных единицах валюты
+      prices: [{ label: "1 Month Premium", amount: 499 }],
       photo_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgk63iQS9UZQzizikasB-NNilJvJ8pppJIwQ&s",
       start_param: "premium-subscription"
     }).then(() => {
