@@ -3,6 +3,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   tg.ready();
   tg.disableVerticalSwipes();
+  tg.setHeaderColor("#000000");
+  tg.setBackgroundColor("#000000");
+  tg.setBottomBarColor("#000000");
 
   function triggerHapticFeedback(type = "impact", style = "medium") {
     const { HapticFeedback } = tg || {};
