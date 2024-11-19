@@ -27,7 +27,11 @@ document.addEventListener("DOMContentLoaded", () => {
     triggerHapticFeedback();
     tg.showPopup({
       title: "Заголовок фыдва",
-      message: "Содержимое попапа без дополнительных кнопок."
+      message: "Содержимое попапа без дополнительных кнопок.",
+      buttons: [
+        { id: "ok", type: "default", text: "OK" },
+        { id: "cancel", type: "destructive", text: "Cancel" }
+      ]
     });
   });
   
