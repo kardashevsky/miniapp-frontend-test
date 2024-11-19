@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const tg = window.Telegram.WebApp;
 
   tg.ready();
+  tg.disableVerticalSwipes();
 
   function triggerHapticFeedback(type = "impact", style = "medium") {
     const { HapticFeedback } = tg || {};
