@@ -22,6 +22,25 @@ document.addEventListener("DOMContentLoaded", () => {
     tg.showAlert("Hello from your MiniApp!");
   });
 
+  // Пример: Показать Popup
+  document.getElementById("show-popup").addEventListener("click", () => {
+    triggerHapticFeedback();
+    tg.openPopup({
+      title: "Custom Popup",
+      message: "This is a test popup!",
+      buttons: [
+        { id: "ok", type: "default", text: "OK" },
+        { id: "cancel", type: "destructive", text: "Cancel" }
+      ]
+    }, (buttonId) => {
+      if (buttonId === "ok") {
+        tg.showAlert("You pressed OK!");
+      } else if (buttonId === "cancel") {
+        tg.showAlert("You pressed Cancel!");
+      }
+    });
+  });
+
   // Тестовые кнопки для Haptic Feedback
   document.getElementById("test-light-impact").addEventListener("click", () => {
     triggerHapticFeedback("impact", "light");
