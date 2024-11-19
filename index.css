@@ -12,6 +12,10 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+h1, h2 {
+  color: #FFFFFF;
+}
+
 button {
   width: 200px;
   display: block;
@@ -19,14 +23,10 @@ button {
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
-  background: #0088cc;
+  background: #6020A0;
   color: #fff;
   border: none;
-  border-radius: 4px;
-}
-
-button:hover {
-  background: #005f88;
+  border-radius: 10px;
 }
 
 #status {
