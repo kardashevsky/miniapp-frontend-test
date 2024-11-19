@@ -35,7 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
       name: "Premium Subscription",
       description: "Unlock premium features with Stars subscription!",
       payload: "subscription_premium",
-      provider_token: "YOUR_PROVIDER_TOKEN", // Замените на реальный токен провайдера
       currency: "stars",
       prices: [{ label: "1 Month Premium", amount: 499 }], // Цена в минимальных единицах валюты
       photo_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgk63iQS9UZQzizikasB-NNilJvJ8pppJIwQ&s",
