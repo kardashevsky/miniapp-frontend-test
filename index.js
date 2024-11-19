@@ -1,61 +1,45 @@
 document.addEventListener("DOMContentLoaded", () => {
   const tg = window.Telegram.WebApp;
 
-  // Инициализация WebApp
   tg.ready();
-
-  // Автоматический переход в полноэкранный режим
-  tg.requestFullscreen();
 
   document.getElementById("status").textContent = `Theme: ${tg.themeParams.bg_color || "default"}`;
 
+  // Функция для вибрации
+  const triggerHapticFeedback = () => {
+    if (tg.HapticFeedback) {
+      tg.HapticFeedback.impactOccurred("medium"); // Вибрация средней силы
+    }
+  };
+
   // Пример: Показать Alert
   document.getElementById("show-alert").addEventListener("click", () => {
+    triggerHapticFeedback();
     tg.showAlert("Hello from your MiniApp!");
   });
 
   // Пример: Закрыть приложение
   document.getElementById("close-app").addEventListener("click", () => {
+    triggerHapticFeedback();
     tg.close();
-  });
-
-  // Пример получения локации
-  document.getElementById("get-location").addEventListener("click", () => {
-    tg.requestLocation({ accuracy: 'high' })
-      .then(location => {
-        alert(`Location: ${location.latitude}, ${location.longitude}`);
-      })
-      .catch(err => {
-        alert(`Failed to get location: ${err.message}`);
-      });
-  });
-
-  // Пример отправки медиа
-  document.getElementById("send-media").addEventListener("click", () => {
-    tg.openMediaSelector({ type: 'photo' })
-      .then((media) => alert("Selected media: " + JSON.stringify(media)))
-      .catch((err) => alert("Failed to select media: " + err.message));
-  });
-
-  // Пример обмена подарками
-  document.getElementById("send-gift").addEventListener("click", () => {
-    tg.openGiftSelector({ user_id: tg.initDataUnsafe.user.id })
-      .then((gift) => alert("Gift sent: " + JSON.stringify(gift)))
-      .catch((err) => alert("Failed to send gift: " + err.message));
   });
 
   // Подписка через звезды
   document.getElementById("subscribe-stars").addEventListener("click", () => {
+    triggerHapticFeedback();
     tg.openInvoice({
       name: "Premium Subscription",
-      description: "Get premium features!",
+      description: "Unlock premium features with Stars subscription!",
       payload: "subscription_premium",
-      provider_token: "YOUR_PROVIDER_TOKEN", // Ваш токен провайдера
-      currency: "USD",
-      prices: [{ label: "1 Month Premium", amount: 499 }],
-      photo_url: "https://example.com/premium-icon.png", // Картинка
+      provider_token: "YOUR_PROVIDER_TOKEN", // Замените на реальный токен провайдера
+      currency: "stars",
+      prices: [{ label: "1 Month Premium", amount: 499 }], // Цена в минимальных единицах валюты
+      photo_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgk63iQS9UZQzizikasB-NNilJvJ8pppJIwQ&s", // URL для изображения (опционально)
       start_param: "premium-subscription"
-    }).then(() => alert("Subscription successful!"))
-      .catch((err) => alert("Failed to subscribe: " + err.message));
+    }).then(() => {
+      alert("Subscription successful!");
+    }).catch((err) => {
+      alert("Failed to subscribe: " + err.message);
+    });
   });
 });
