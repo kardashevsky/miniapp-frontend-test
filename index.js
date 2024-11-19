@@ -3,8 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   tg.ready();
 
-  document.getElementById("status").textContent = `Theme: ${tg.themeParams.bg_color || "default"}`;
-
   // Функция для вибрации
   const triggerHapticFeedback = () => {
     if (tg.HapticFeedback) {
