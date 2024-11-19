@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Пример: Показать Popup
   document.getElementById("show-popup").addEventListener("click", () => {
+    triggerHapticFeedback("notification", "error");
     tg.showPopup({
       title: "Заголовок попапа",
       message: "Содержимое попапа без дополнительных кнопок."
