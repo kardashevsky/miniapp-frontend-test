@@ -22,30 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
     tg.showAlert("Hello from your MiniApp!");
   });
 
-  // Пример: Закрыть приложение
-  document.getElementById("close-app").addEventListener("click", () => {
-    triggerHapticFeedback();
-    tg.close();
-  });
-
-  // Подписка через звезды
-  document.getElementById("subscribe-stars").addEventListener("click", () => {
-    triggerHapticFeedback();
-    tg.openInvoice({
-      name: "Premium Subscription",
-      description: "Unlock premium features with Stars subscription!",
-      payload: "subscription_premium",
-      currency: "stars",
-      prices: [{ label: "1 Month Premium", amount: 499 }], // Цена в минимальных единицах валюты
-      photo_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgk63iQS9UZQzizikasB-NNilJvJ8pppJIwQ&s",
-      start_param: "premium-subscription"
-    }).then(() => {
-      alert("Subscription successful!");
-    }).catch((err) => {
-      alert("Failed to subscribe: " + err.message);
-    });
-  });
-
   // Тестовые кнопки для Haptic Feedback
   document.getElementById("test-light-impact").addEventListener("click", () => {
     triggerHapticFeedback("impact", "light");
