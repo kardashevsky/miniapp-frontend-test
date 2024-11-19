@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  window.Telegram.WebApp.reloadPage();
   const tg = window.Telegram.WebApp;
 
   tg.ready();
