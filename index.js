@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Пример: Показать Popup
   document.getElementById("show-popup").addEventListener("click", () => {
-    triggerHapticFeedback("notification", "error");
+    triggerHapticFeedback("impact", "soft");
     tg.showPopup({
       title: "Заголовок попапа",
       message: "Содержимое попапа без дополнительных кнопок.",
@@ -40,8 +40,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   document.getElementById("show-invoice").addEventListener("click", () => {
+    triggerHapticFeedback("impact", "soft");
     const invoiceUrl = "https://t.me/invoice/abc123";
-
     Telegram.WebApp.openInvoice(invoiceUrl, (status) => {
       if (status === "paid") {
         Telegram.WebApp.showAlert("Спасибо за оплату!");
