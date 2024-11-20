@@ -38,7 +38,18 @@ document.addEventListener("DOMContentLoaded", () => {
       ]
     });
   });
-  
+
+  document.getElementById("show-invoice").addEventListener("click", () => {
+    const invoiceUrl = "https://t.me/invoice/abc123";
+
+    Telegram.WebApp.openInvoice(invoiceUrl, (status) => {
+      if (status === "paid") {
+        Telegram.WebApp.showAlert("Спасибо за оплату!");
+      } else if (status === "cancelled") {
+        Telegram.WebApp.showAlert("Вы отменили оплату.");
+      }
+    });
+  });
 
   // Тестовые кнопки для Haptic Feedback
   document.getElementById("test-light-impact").addEventListener("click", () => {
