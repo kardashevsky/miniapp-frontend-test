@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.getElementById("show-invoice").addEventListener("click", () => {
     triggerHapticFeedback("impact", "soft");
-    const invoiceUrl = "https://t.me/invoice/abc123";
+    const invoiceUrl = "https://t.me/$kOAAwTeVCVYhAQAAjbNLWe5ksE8";
     Telegram.WebApp.openInvoice(invoiceUrl, (status) => {
       if (status === "paid") {
         Telegram.WebApp.showAlert("Спасибо за оплату!");
